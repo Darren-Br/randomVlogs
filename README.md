@@ -1,4 +1,5 @@
 # randomVlogs
-Simple website to watch a random vlog from a selection of Youtubers.
+Simple node js app to watch a random vlog from a few of Youtubers .
 
-Version 0.1 is just hard-coded with Casey Neistat Vlogs.
+Version 0.2 has 9 Youtubers, video links are just loaded in via text file.
+Works but needs polish.

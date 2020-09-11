@@ -1,0 +1,68 @@
+<div id="grad1">
+    <div class="container">
+      <h2 id="headertag" class="display-2 text-center"></h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" id="vid" width="480" height="270" src="" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row justify-content-center">
+        <i class="fas fa-arrow-left fa-7x" onclick="backwardVlog()"></i>
+        <i class="fas fa-dice fa-7x " onclick="newVlog()"></i>
+        <i class="fas fa-arrow-right fa-7x" onclick="forwardVlog()"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <script onload="setTimeout(startUp, 1)">
+    var queryString = location.search.substring(1);
+    var file = "/links/"+queryString+".txt";
+
+
+    var num = 2;
+    var lines;
+
+    //opens the text file and loads the first video
+    function startUp() {
+      jQuery.ajaxSetup({async:false}); //need the following function to fully complete before moving on.
+      jQuery.get(file, function (txt, status) {
+        lines = txt.split("\n");
+      });
+      document.getElementById("headertag").innerHTML = lines[0];
+      newVlog();
+    }
+
+    //gets the video and replaces the url to show it
+    function getFile() {
+      var open = lines[num];
+      var url = open.replace("watch?v=", "embed/");
+      $("#vid").attr("src", url);
+    }
+
+    //forward to next function
+    function forwardVlog(){
+      if(num != lines.length-1){
+        num = num + 1;
+      }
+      getFile();
+    }
+
+    //backward to previous video function
+    function backwardVlog(){
+      if(num != 2){ //ensures it's not the first video
+        num = num - 1;
+      }
+      getFile();
+    }
+
+    //this is used to get a new random vlog
+    function newVlog() {
+      num = Math.floor(Math.random() * lines.length-1) + 2;
+      getFile();
+    }
+
+  </script>

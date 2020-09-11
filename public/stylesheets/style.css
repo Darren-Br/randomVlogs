@@ -1,0 +1,14 @@
+body, 
+html {
+      height: 100%;
+      margin: 0;
+    }
+.fa-arrow-right:hover {
+      color: grey;
+    }
+    .fa-arrow-left:hover {
+      color: grey;
+    }
+    .fa-dice:hover{
+      color: grey;
+    }

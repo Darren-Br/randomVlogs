@@ -10,4 +10,8 @@ router.get('/videos', function(req, res, next) {
   res.render('videos', { title: 'Random Vlogsanator' });
 });
 
+router.get('/music', function(req, res, next) {
+  res.render('music', { title: 'Random Music App' });
+});
+
 module.exports = router;
